@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing – MediTranscribe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pricing.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">M</div>
+      <span class="logo-text">Medi<span>Transcribe</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="pricing.html" class="active">Pricing</a></li>
+      <li><a href="agreement.html">Agreement</a></li>
+    </ul>
+    <div style="display:flex;gap:10px;">
+      <a href="dashboard.html" class="btn btn-outline">Sign In</a>
+      <a href="upload.html" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-label">Simple, Transparent Pricing</span>
+  <h1>Per-Minute Pricing.<br>No Surprises.</h1>
+  <p>Pay only for the audio minutes you transcribe. Choose Standard or Urgent delivery to fit your timeline and budget.</p>
+</div>
+
+<section>
+  <div class="section-inner" style="text-align:center;">
+    <span class="section-label">Service Plans</span>
+    <h2 class="section-title" style="max-width:500px;margin:0 auto 12px;">Choose Your Plan</h2>
+    <p class="section-sub" style="margin:0 auto;">All plans include HIPAA compliance, certified transcriptionists, and secure delivery.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-icon">🏥</div>
+        <div class="plan-name">Clinic</div>
+        <div class="plan-desc">Perfect for small clinics and individual practices with moderate volume.</div>
+        <div class="plan-price">
+          <span class="price-dollar">₹</span>
+          <span class="price-amount">1.25</span>
+          <span class="price-unit">/ minute</span>
+        </div>
+        <ul class="plan-features">
+          <li>Standard 24-hour delivery</li>
+          <li>Up to 50 hrs/month audio</li>
+          <li>Basic dashboard access</li>
+          <li>Email support</li>
+          <li>Signed BAA included</li>
+          <li class="disabled">Priority queue access</li>
+          <li class="disabled">API integration</li>
+        </ul>
+        <a href="upload.html" class="btn btn-outline" style="width:100%;justify-content:center;">Start Uploading</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="featured-badge">⭐ Most Popular</div>
+        <div class="plan-icon">🏨</div>
+        <div class="plan-name">Hospital</div>
+        <div class="plan-desc">Designed for hospitals with high-volume, multi-department transcription needs.</div>
+        <div class="plan-price">
+          <span class="price-dollar">₹</span>
+          <span class="price-amount">0.99</span>
+          <span class="price-unit">/ minute</span>
+        </div>
+        <ul class="plan-features">
+          <li>Standard 24-hour delivery</li>
+          <li>Urgent 4-hour option (2× rate)</li>
+          <li>Unlimited audio volume</li>
+          <li>Full dashboard + analytics</li>
+          <li>Priority queue access</li>
+          <li>Dedicated support manager</li>
+          <li>Signed BAA + audit logs</li>
+        </ul>
+        <a href="dashboard.html" class="btn btn-primary" style="width:100%;justify-content:center;">Access Dashboard →</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-icon">🏢</div>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-desc">Custom solutions for large health networks and EHR system integrations.</div>
+        <div class="plan-price">
+          <span class="price-dollar" style="font-size:14px;color:var(--text-muted);">Custom</span>
+          <span class="price-amount" style="font-size:36px;">Quote</span>
+        </div>
+        <ul class="plan-features">
+          <li>Volume-based pricing</li>
+          <li>All Hospital features included</li>
+          <li>EHR / EMR API integration</li>
+          <li>Custom turnaround SLAs</li>
+          <li>White-label portal option</li>
+          <li>On-site training available</li>
+          <li>24/7 dedicated support</li>
+        </ul>
+        <a href="agreement.html" class="btn btn-outline" style="width:100%;justify-content:center;">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-billing">
+  <div class="section-inner">
+    <span class="section-label">How Billing Works</span>
+    <h2 class="section-title">Per-Minute Rate Structure</h2>
+    <p class="section-sub">Our pricing is based on audio duration in minutes. Urgent delivery applies a 2× multiplier to ensure priority staffing.</p>
+    <div class="billing-grid">
+      <div class="billing-card">
+        <div class="billing-card-icon">🕐</div>
+        <h3>Standard Delivery</h3>
+        <p>Files are transcribed within 24 hours by a certified medical transcriptionist. Ideal for routine clinical notes and non-urgent reports.</p>
+        <table class="rate-table">
+          <thead>
+            <tr><th>Volume (hrs/month)</th><th>Rate per minute</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0 – 10 hours</td><td style="font-weight:600;color:var(--primary);">₹1.25 / min</td></tr>
+            <tr><td>10 – 50 hours</td><td style="font-weight:600;color:var(--primary);">₹1.10 / min</td></tr>
+            <tr><td>50 – 200 hours</td><td style="font-weight:600;color:var(--primary);">₹0.99 / min</td></tr>
+            <tr><td>200+ hours</td><td style="font-weight:600;color:var(--primary);">Custom rate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="billing-card">
+        <div class="billing-card-icon">⚡</div>
+        <h3>Urgent Delivery Multiplier</h3>
+        <p>For files requiring turnaround within 4 hours, a 2× urgent multiplier is applied to ensure priority assignment to a certified transcriptionist.</p>
+        <div class="multiplier-visual">
+          <div class="mult-box">
+            <div class="mult-label">Standard Rate</div>
+            <div class="mult-value" style="color:var(--primary);">₹1.25</div>
+            <div class="mult-rate">per minute</div>
+          </div>
+          <div class="mult-arrow">×2 ⚡</div>
+          <div class="mult-box">
+            <div class="mult-label">Urgent Rate</div>
+            <div class="mult-value" style="color:var(--danger);">₹2.50</div>
+            <div class="mult-rate">per minute</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;font-size:13px;color:var(--text-muted);line-height:1.6;">
+          The urgent multiplier covers overnight staffing, priority queuing, and expedited quality review to guarantee 4-hour delivery SLA.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calculator-section">
+  <div class="section-inner">
+    <div class="calc-card">
+      <div>
+        <h3>Cost Calculator</h3>
+        <p>Estimate your transcription costs before uploading. Enter your audio duration and select a turnaround time to see the real-time cost breakdown.</p>
+        <a href="upload.html" class="btn" style="background:white;color:var(--primary);font-weight:600;">Try Full Upload Form →</a>
+      </div>
+      <div>
+        <div class="calc-form">
+          <div class="calc-row">
+            <label class="calc-label">Audio Duration (minutes)</label>
+            <input type="number" class="calc-input" id="calcDuration" placeholder="e.g. 20" min="1" oninput="calcEstimate()">
+          </div>
+          <div class="calc-row">
+            <label class="calc-label">Turnaround Time</label>
+            <select class="calc-select" id="calcType" onchange="calcEstimate()">
+              <option value="standard">Standard – 24hr (₹1.25/min)</option>
+              <option value="urgent">Urgent – 4hr (₹2.50/min × 2)</option>
+            </select>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label">Monthly Volume (hrs)</label>
+            <select class="calc-select" id="calcVolume" onchange="calcEstimate()">
+              <option value="1.25">0–10 hours → ₹1.25/min</option>
+              <option value="1.10">10–50 hours → ₹1.10/min</option>
+              <option value="0.99">50–200 hours → ₹0.99/min</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Estimated Total Cost</div>
+          <div class="calc-result-price" id="calcResult">₹0.00</div>
+          <div class="calc-result-breakdown" id="calcBreakdown">Enter duration to see estimate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="section-inner">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Pricing Questions Answered</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">How is audio duration measured?</div>
+        <div class="faq-a">Duration is measured in the total playback time of the uploaded audio file, rounded up to the nearest minute for billing purposes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When does the urgent multiplier apply?</div>
+        <div class="faq-a">The 2× urgent multiplier is applied when you select "Urgent" turnaround at upload time. You'll see the cost reflected in the real-time estimate before submitting.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are there setup or subscription fees?</div>
+        <div class="faq-a">No. MediTranscribe is purely pay-per-use. You only pay for the audio minutes you transcribe. Monthly billing statements are issued automatically.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do volume discounts apply automatically?</div>
+        <div class="faq-a">Yes. Volume pricing tiers are applied automatically each billing cycle based on cumulative monthly usage across your entire organization account.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is the BAA included in all plans?</div>
+        <div class="faq-a">Yes, a Business Associate Agreement (BAA) is included with every hospital and enterprise account at no additional cost, as required for HIPAA compliance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What payment methods are accepted?</div>
+        <div class="faq-a">We accept ACH bank transfer, credit card, and monthly purchase orders for enterprise accounts. Net-30 terms available for qualifying hospitals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width:1100px;margin:0 auto;">
+    <a href="index.html" class="logo">
+      <div class="logo-icon" style="margin-right:8px;">M</div>
+      <span class="logo-text">Medi<span>Transcribe</span></span>
+    </a>
+    <p style="margin-top:8px;">© 2026 MediTranscribe. All rights reserved. HIPAA Compliant.</p>
+  </div>
+</footer>
+
+<script src="pricing.js"></script>
+</body>
+</html>

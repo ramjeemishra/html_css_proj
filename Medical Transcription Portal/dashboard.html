@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard – MediTranscribe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<aside class="sidebar">
+  <a href="index.html" class="sidebar-logo">
+    <div class="logo-icon">M</div>
+    <span class="logo-text">Medi<span>Transcribe</span></span>
+  </a>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">Main</div>
+    <a href="dashboard.html" class="active"><span>📊</span> Dashboard</a>
+    <a href="upload.html"><span>⬆️</span> Upload Audio</a>
+    <div class="sidebar-section">Manage</div>
+    <a href="dashboard.html"><span>📋</span> My Files</a>
+    <a href="dashboard.html"><span>🔔</span> Notifications</a>
+    <a href="pricing.html"><span>💰</span> Pricing</a>
+    <div class="sidebar-section">Account</div>
+    <a href="agreement.html"><span>🔒</span> Agreement</a>
+    <a href="index.html"><span>🚪</span> Sign Out</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="user-info">
+      <div class="user-avatar">GH</div>
+      <div>
+        <div class="user-name">General Hospital</div>
+        <div class="user-role">Admin Account</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Dashboard</h1>
+      <p>Welcome back, General Hospital</p>
+    </div>
+    <div class="topbar-right">
+      <div class="icon-btn" title="Notifications">🔔</div>
+      <div class="icon-btn" title="Settings">⚙️</div>
+      <a href="upload.html" class="btn btn-primary">+ Upload Audio</a>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-info">
+          <div class="stat-label">Total Uploads</div>
+          <div class="stat-value" id="totalUploads">47</div>
+          <div class="stat-change up">↑ 8 this week</div>
+        </div>
+        <div class="stat-icon bg-blue-soft">📁</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-info">
+          <div class="stat-label">In Progress</div>
+          <div class="stat-value">6</div>
+          <div class="stat-change neutral">3 urgent</div>
+        </div>
+        <div class="stat-icon bg-orange-soft">⏳</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-info">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value">39</div>
+          <div class="stat-change up">↑ 98.7% accuracy</div>
+        </div>
+        <div class="stat-icon bg-green-soft">✅</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-info">
+          <div class="stat-label">This Month</div>
+          <div class="stat-value">₹842</div>
+          <div class="stat-change neutral">Standard billing</div>
+        </div>
+        <div class="stat-icon bg-cyan-soft">💳</div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Quick Upload</div>
+              <div class="card-sub">Drag & drop or click to upload</div>
+            </div>
+            <a href="upload.html" class="btn btn-sm btn-primary">Full Upload Form</a>
+          </div>
+          <div class="upload-zone" id="quickDrop" onclick="document.getElementById('fileInput').click()">
+            <div class="upload-icon">🎙️</div>
+            <div class="upload-title">Drop your audio file here</div>
+            <div class="upload-sub">or click to browse files</div>
+            <div class="upload-formats">MP3 · WAV · M4A · OGG · FLAC · Max 500MB</div>
+          </div>
+          <input type="file" id="fileInput" accept=".mp3,.wav,.m4a,.ogg,.flac,audio/*">
+          <div class="upload-progress-list" id="uploadProgressList"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Recent Files</div>
+              <div class="card-sub">Your latest transcription submissions</div>
+            </div>
+            <select style="border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;color:var(--text);background:var(--white);cursor:pointer;">
+              <option>All Files</option>
+              <option>Processing</option>
+              <option>Completed</option>
+            </select>
+          </div>
+          <div class="file-table-wrap">
+            <table id="fileTable">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                  <th>Duration</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="fileTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Transcription Status</div>
+              <div class="card-sub">consult_cardio_0312.wav</div>
+            </div>
+          </div>
+          <div class="status-tracker">
+            <div class="tracker-item">
+              <div class="tracker-dot dot-done">✓</div>
+              <div class="tracker-info">
+                <div class="tracker-title">File Uploaded</div>
+                <div class="tracker-time">Today, 09:14 AM</div>
+              </div>
+            </div>
+            <div class="tracker-item">
+              <div class="tracker-dot dot-done">✓</div>
+              <div class="tracker-info">
+                <div class="tracker-title">Validation Passed</div>
+                <div class="tracker-time">Today, 09:15 AM</div>
+              </div>
+            </div>
+            <div class="tracker-item">
+              <div class="tracker-dot dot-active">▶</div>
+              <div class="tracker-info">
+                <div class="tracker-title">Transcriptionist Assigned</div>
+                <div class="tracker-time">In progress · 68% done</div>
+              </div>
+            </div>
+            <div class="tracker-item">
+              <div class="tracker-dot dot-pending">4</div>
+              <div class="tracker-info">
+                <div class="tracker-title">Quality Review</div>
+                <div class="tracker-time">Pending</div>
+              </div>
+            </div>
+            <div class="tracker-item">
+              <div class="tracker-dot dot-pending">5</div>
+              <div class="tracker-info">
+                <div class="tracker-title">Delivered to Portal</div>
+                <div class="tracker-time">Estimated 2:30 PM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Monthly Summary</div>
+          </div>
+          <div class="quick-stats">
+            <div class="qs-item"><span class="qs-label">Total Audio Hours</span><span class="qs-value">18.4 hr</span></div>
+            <div class="qs-item"><span class="qs-label">Estimated Words</span><span class="qs-value">165,600</span></div>
+            <div class="qs-item"><span class="qs-label">Urgent Deliveries</span><span class="qs-value">9</span></div>
+            <div class="qs-item"><span class="qs-label">Avg Accuracy</span><span class="qs-value" style="color:var(--success)">98.7%</span></div>
+            <div class="qs-item"><span class="qs-label">Billing Total</span><span class="qs-value">₹842.00</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

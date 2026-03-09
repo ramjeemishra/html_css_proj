@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Audio – MediTranscribe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="upload.css">
+</head>
+<body>
+
+<aside class="sidebar">
+  <a href="index.html" class="sidebar-logo">
+    <div class="logo-icon">M</div>
+    <span class="logo-text">Medi<span>Transcribe</span></span>
+  </a>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">Main</div>
+    <a href="dashboard.html"><span>📊</span> Dashboard</a>
+    <a href="upload.html" class="active"><span>⬆️</span> Upload Audio</a>
+    <div class="sidebar-section">Manage</div>
+    <a href="dashboard.html"><span>📋</span> My Files</a>
+    <a href="dashboard.html"><span>🔔</span> Notifications</a>
+    <a href="pricing.html"><span>💰</span> Pricing</a>
+    <div class="sidebar-section">Account</div>
+    <a href="agreement.html"><span>🔒</span> Agreement</a>
+    <a href="index.html"><span>🚪</span> Sign Out</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="user-info">
+      <div class="user-avatar">GH</div>
+      <div>
+        <div class="user-name">General Hospital</div>
+        <div class="user-role">Admin Account</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Upload Audio</h1>
+      <p>Submit a new audio recording for transcription</p>
+    </div>
+    <a href="dashboard.html" class="btn btn-outline">← Back to Dashboard</a>
+  </header>
+
+  <main class="content">
+    <div class="upload-layout">
+
+      <div>
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header">
+            <div class="card-title">Audio File</div>
+            <div class="card-sub">Supported formats: MP3, WAV, M4A, OGG, FLAC · Max 500MB</div>
+          </div>
+          <div class="card-body">
+            <div class="drop-zone" id="dropZone" onclick="document.getElementById('audioFile').click()">
+              <span class="drop-icon">🎙️</span>
+              <div class="drop-title" id="dropTitle">Drag & drop your audio file here</div>
+              <div class="drop-sub" id="dropSub">or click to browse from your computer</div>
+              <span class="drop-formats">MP3 · WAV · M4A · OGG · FLAC</span>
+            </div>
+            <div class="file-preview" id="filePreview">
+              <div class="file-prev-icon">🎙️</div>
+              <div class="file-prev-info">
+                <div class="file-prev-name" id="prevName">—</div>
+                <div class="file-prev-meta" id="prevMeta">—</div>
+              </div>
+              <button class="btn btn-outline" style="padding:7px 12px;font-size:13px;" onclick="clearFile()">✕ Remove</button>
+            </div>
+            <div class="error-msg" id="fileError">⚠️ Invalid file type or size exceeded.</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:24px;">
+          <div class="card-header">
+            <div class="card-title">Transcription Options</div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Turnaround Time <span>*</span></label>
+              <div class="turnaround-options">
+                <div class="turnaround-option">
+                  <input type="radio" name="turnaround" id="standard" value="standard" checked onchange="updateEstimate()">
+                  <label class="turnaround-label" for="standard">
+                    <div class="turnaround-icon">🕐</div>
+                    <div class="turnaround-name">Standard</div>
+                    <div class="turnaround-time">Delivered within 24 hours</div>
+                    <div class="turnaround-price">₹1.25 / min</div>
+                  </label>
+                </div>
+                <div class="turnaround-option">
+                  <input type="radio" name="turnaround" id="urgent" value="urgent" onchange="updateEstimate()">
+                  <label class="turnaround-label" for="urgent">
+                    <div class="turnaround-icon">⚡</div>
+                    <div class="turnaround-name">Urgent</div>
+                    <div class="turnaround-time">Delivered within 4 hours</div>
+                    <div class="turnaround-price">₹2.50 / min <span style="font-size:11px;color:var(--danger)">2× rate</span></div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="specialty">Medical Specialty</label>
+                <select class="form-select" id="specialty">
+                  <option>General Medicine</option>
+                  <option>Cardiology</option>
+                  <option>Neurology</option>
+                  <option>Orthopedics</option>
+                  <option>Oncology</option>
+                  <option>Radiology</option>
+                  <option>Psychiatry</option>
+                  <option>Pediatrics</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="physician">Physician Name</label>
+                <input type="text" class="form-input" id="physician" placeholder="Dr. First Last">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="audioDuration">Audio Duration (minutes) <span>*</span></label>
+              <input type="number" class="form-input" id="audioDuration" placeholder="e.g. 15" min="1" max="600" oninput="updateEstimate()">
+              <div style="font-size:12px;color:var(--text-muted);margin-top:5px;">Enter estimated duration if the file duration cannot be read automatically.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notes">Additional Notes (optional)</label>
+              <textarea class="form-textarea" id="notes" placeholder="E.g. Multiple speakers, heavy accent, medical jargon, background noise..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Confidentiality Agreement</div>
+            <div class="card-sub">Required before submission</div>
+          </div>
+          <div class="card-body">
+            <div style="background:var(--surface);border-radius:10px;padding:16px;font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;border:1px solid var(--border);">
+              By submitting this file, I confirm that this recording has been obtained with proper patient consent in accordance with HIPAA regulations, and that my organization has a signed Business Associate Agreement (BAA) with MediTranscribe. I acknowledge that all audio content is confidential Protected Health Information (PHI) and will be handled accordingly.
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
+              <input type="checkbox" id="agreeCheck" style="margin-top:3px;width:16px;height:16px;accent-color:var(--primary);" onchange="updateSubmitState()">
+              <span style="font-size:14px;font-weight:500;">I agree to the <a href="agreement.html" style="color:var(--primary);">Confidentiality Agreement</a> and confirm patient consent compliance.</span>
+            </label>
+            <div class="error-msg" id="agreeError">⚠️ You must accept the confidentiality agreement to proceed.</div>
+          </div>
+          <div style="padding:0 24px 24px;">
+            <div class="submit-section">
+              <button class="btn btn-primary" id="submitBtn" onclick="submitForm()" style="flex:1;justify-content:center;padding:13px;" disabled>
+                🚀 Submit for Transcription
+              </button>
+              <a href="dashboard.html" class="btn btn-outline" style="padding:13px 20px;">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="estimate-panel">
+        <div class="estimate-card">
+          <div class="estimate-header">
+            <h3>💰 Live Cost Estimate</h3>
+            <p>Based on duration & turnaround selection</p>
+          </div>
+          <div class="estimate-body">
+            <div class="estimate-row">
+              <span class="estimate-key">Duration</span>
+              <span class="estimate-val" id="estDuration">— min</span>
+            </div>
+            <div class="estimate-row">
+              <span class="estimate-key">Est. Word Count</span>
+              <span class="estimate-val" id="estWords">—</span>
+            </div>
+            <div class="estimate-row">
+              <span class="estimate-key">Rate</span>
+              <span class="estimate-val" id="estRate">₹1.25 / min</span>
+            </div>
+            <div class="estimate-row">
+              <span class="estimate-key">Turnaround</span>
+              <span class="estimate-val" id="estTurnaround">Standard (24hr)</span>
+            </div>
+            <div class="estimate-row">
+              <span class="estimate-key">Multiplier</span>
+              <span class="estimate-val" id="estMultiplier">1×</span>
+            </div>
+            <div class="estimate-row" style="margin-top:6px;padding-top:14px;border-top:2px solid var(--border);">
+              <span class="estimate-key" style="font-weight:600;color:var(--text);">Estimated Total</span>
+              <span class="estimate-val estimate-total" id="estTotal">₹0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Upload Tips</div>
+          </div>
+          <div class="card-body" style="padding-top:12px;">
+            <ul class="tips-list">
+              <li>Use WAV or FLAC for highest transcription accuracy</li>
+              <li>Ensure minimal background noise for best results</li>
+              <li>Speak clearly and at a moderate pace during recording</li>
+              <li>Identify speaker names at the beginning if multiple speakers</li>
+              <li>Files over 500MB should be split into segments</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="border-color:rgba(16,185,129,0.3);">
+          <div class="card-body" style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:28px;">🔒</div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--text);">HIPAA Secure Upload</div>
+              <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">All files are encrypted with AES-256 in transit and at rest.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<div class="success-overlay" id="successOverlay">
+  <div class="success-modal">
+    <div class="success-icon">🎉</div>
+    <h2>Submission Successful!</h2>
+    <p>Your audio file has been securely uploaded and queued for transcription. You'll receive an email notification when your transcript is ready.</p>
+    <div class="success-ref" id="refNumber">REF-MT-000000</div>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
+      <button class="btn btn-outline" onclick="closeSuccess()">Upload Another</button>
+    </div>
+  </div>
+</div>
+
+<script src="upload.js"></script>
+</body>
+</html>
